@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import moment from "moment";
 const initialState = {
-  stuData: null,
+  stuData: [],
 
   // Section AddOns Start
   storage_keys: {},
@@ -14,14 +14,14 @@ export const mainCacheSlice = createSlice({
     reset: (state, action) => {
       Object.assign(state, initialState);
     },
-    updatePFundData: (state, action) => {
+    updateStuData: (state, action) => {
       state.stuData = action.payload ? action.payload : "";
 
-      // console.log(state);
+      console.log(state);
     },
   },
 });
 
-export const { reset, updatePFundData } = mainCacheSlice.actions;
+export const { reset, updateStuData } = mainCacheSlice.actions;
 
 export default mainCacheSlice.reducer;

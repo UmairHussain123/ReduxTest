@@ -1,7 +1,11 @@
 import { StyleSheet, Text, View, TextInput, Button } from "react-native";
 import React from "react";
-
+import { updateStuData } from "../redux/mainCacheSlice";
+import { useSelector, useDispatch } from "react-redux";
 const Fromd = () => {
+  const dispatch = useDispatch();
+  let studentData = useSelector((state) => state.mainCache);
+  console.log("DDD", studentData);
   const [name, setName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
   return (
