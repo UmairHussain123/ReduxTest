@@ -4,24 +4,25 @@ import React from "react";
 const Home = ({ navigation }) => {
   const stuFromList = [
     {
-      id: 1,
-      name: "registration From",
+      id: 0,
+      dept: "Reg",
+      fromName: "registration From",
     },
-    { id: 2, name: "Examination from" },
-    { id: 3, name: "card" },
+    { id: 1, dept: "Exm", fromName: "Examination from" },
+    { id: 2, dept: "Cr", fromName: "card" },
   ];
   return (
     <View style={styles.mainContainer}>
       {stuFromList.map((item, index) => {
         return (
           <View key={index} style={styles.fromCard}>
-            <Text>{item.name}</Text>
+            <Text>{item.fromName}</Text>
             <Text style={{ margin: 10 }}></Text>
             <Button
               title="Next"
               style={{}}
               onPress={() => {
-                navigation.navigate("Fromd");
+                navigation.navigate("Fromd", { item, index });
               }}
             ></Button>
           </View>

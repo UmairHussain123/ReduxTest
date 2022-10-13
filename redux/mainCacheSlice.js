@@ -17,7 +17,10 @@ export const mainCacheSlice = createSlice({
     updateStuData: (state, action) => {
       state.stuData = action.payload ? action.payload : "";
 
-      console.log(state);
+      // const obj = action.payload;
+
+      state.stuData.concat(action.payload);
+      // state.stuData.push(obj);
     },
   },
 });
