@@ -44,11 +44,7 @@ const Fromd = ({ route, navigation }) => {
     };
     console.log(my_json);
 
-    for (var i in my_json) {
-      // let obj = Object.assign(my_json[i], data1[i]);
-      console.log(i);
-      data.push(i);
-    }
+    data.filter(() => {});
     console.log(data);
     // if (studentData.length == 0) {
     //   const data =  {
