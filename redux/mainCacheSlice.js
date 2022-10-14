@@ -15,12 +15,13 @@ export const mainCacheSlice = createSlice({
       Object.assign(state, initialState);
     },
     updateStuData: (state, action) => {
-      state.stuData = action.payload ? action.payload : "";
+      const payload = action.payload ? action.payload : "";
+      // console.log("payload", payload);
 
+      state.stuData = state.stuData.concat(payload);
       // const obj = action.payload;
 
-      state.stuData.concat(action.payload);
-      // state.stuData.push(obj);
+      // console.log("state.stuData", state.stuData);
     },
   },
 });

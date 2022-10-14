@@ -8,15 +8,17 @@ const Fromd = ({ route, navigation }) => {
   } = route;
   console.log(">>>>>>>param", item.id);
 
-  const [DataArry, setDataArry] = useState("");
+  const [arrObj, setArrObj] = useState([]);
+
   const getStuData = useSelector((state) =>
-    state.mainCache.stuData ? state.mainCache.stuData : ""
+    state.mainCache.stuData[0] ? state.mainCache.stuData[0] : ""
   );
 
   const dispatch = useDispatch();
   let studentData = useSelector((state) =>
     state.mainCache.stuData ? state.mainCache.stuData : ""
   );
+  console.log("studentData", studentData);
 
   // console.log("DDD", arr);
   const [name, setName] = React.useState(
@@ -26,8 +28,6 @@ const Fromd = ({ route, navigation }) => {
     getStuData.lastName ? getStuData.lastName : ""
   );
 
-  useEffect(() => {}, [name, lastName]);
-
   const updateData = () => {
     // const data1 = {
     //   id: "",
@@ -35,17 +35,18 @@ const Fromd = ({ route, navigation }) => {
     //   name: "",
     //   lastName: "",
     // };
-    var data = [];
-    var my_json = {
+
+    var data = {
       id: item.id,
       dept: item.dept,
       name: name,
       lastName: lastName,
     };
-    console.log(my_json);
 
-    data.filter(() => {});
-    console.log(data);
+    // arrObj.push(data);
+    // console.log(arrObj);
+    dispatch(updateStuData(data));
+
     // if (studentData.length == 0) {
     //   const data =  {
     //     id: item.id,
@@ -64,7 +65,6 @@ const Fromd = ({ route, navigation }) => {
     // const test = arr.concat(arrOfObj);
     // dispatch(updateStuData(data));
   };
-
   return (
     <View>
       <Text
