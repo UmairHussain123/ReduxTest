@@ -28,6 +28,7 @@ const Home = ({ navigation }) => {
           </View>
         );
       })}
+      <Text></Text>
     </View>
   );
 };

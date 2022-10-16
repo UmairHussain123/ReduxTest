@@ -6,36 +6,29 @@ const Fromd = ({ route, navigation }) => {
   const {
     params: { item },
   } = route;
-  console.log(">>>>>>>param", item.id);
+  // console.log(">>>>>>>param", item.id);
 
   const [arrObj, setArrObj] = useState([]);
 
   const getStuData = useSelector((state) =>
-    state.mainCache.stuData[0] ? state.mainCache.stuData[0] : ""
-  );
-
-  const dispatch = useDispatch();
-  let studentData = useSelector((state) =>
     state.mainCache.stuData ? state.mainCache.stuData : ""
   );
-  console.log("studentData", studentData);
+  var StudentData = getStuData.find((e) => e.dept == item.dept);
+  // console.log(StudentData);
+  console.log(">>", getStuData);
+  const dispatch = useDispatch();
+  // let studentData = useSelector((state) =>
+  //   state.mainCache.stuData ? state.mainCache.stuData : ""
+  // );
+  // console.log("studentData", studentData);
 
   // console.log("DDD", arr);
-  const [name, setName] = React.useState(
-    getStuData.name ? getStuData.name : ""
-  );
+  const [name, setName] = React.useState(StudentData ? StudentData.name : "");
   const [lastName, setLastName] = React.useState(
-    getStuData.lastName ? getStuData.lastName : ""
+    StudentData ? StudentData.lastName : ""
   );
 
   const updateData = () => {
-    // const data1 = {
-    //   id: "",
-    //   dept: "",
-    //   name: "",
-    //   lastName: "",
-    // };
-
     var data = {
       id: item.id,
       dept: item.dept,
@@ -43,27 +36,7 @@ const Fromd = ({ route, navigation }) => {
       lastName: lastName,
     };
 
-    // arrObj.push(data);
-    // console.log(arrObj);
     dispatch(updateStuData(data));
-
-    // if (studentData.length == 0) {
-    //   const data =  {
-    //     id: item.id,
-    //     dept: item.dept,
-    //     name: name,
-    //     lastName: lastName,
-    //   };
-
-    //   const arr = [];
-
-    // for (var i in data ) {
-    //   const element = arr.push(data);
-
-    // }
-    // const arrOfObj = arr.push(...data, data);
-    // const test = arr.concat(arrOfObj);
-    // dispatch(updateStuData(data));
   };
   return (
     <View>
